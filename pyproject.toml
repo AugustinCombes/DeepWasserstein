@@ -14,6 +14,10 @@ seaborn = "^0.12.2"
 jax = "^0.4.8"
 ott-jax = "^0.4.0"
 flax = "^0.6.9"
+requests = "^2.29.0"
+scikit-learn = "^1.2.2"
+tqdm = "^4.65.0"
+spacy = "^3.5.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -46,4 +50,7 @@ update_jax_12 = [
 ]
 update_jax_11 = [
   { cmd = 'pip install --upgrade "jax[cuda11_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html' },
+]
+poetry_requirements = [
+  { shell = 'poetry export --format requirements.txt >> requirements.txt' },
 ]
