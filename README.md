@@ -63,9 +63,9 @@ The resulting value should be close to the "true" Wasserstein distance between t
 ### IV. Numerical estimation
 
 In practice, denoting with $\mathbb{\hat E}$ the empirical mean operator, we will optimize numerically the empirical counterpart of this optimization program, that is:
-$$
+```math
 \max_{w\in\mathcal{W}} \mathbb{\hat E}_{x_1\sim\mathbb{P}_1}[f_w(x_1)] - \mathbb{\hat E}_{x_2\sim\mathbb{P}_2}[f_w(x_2)]
-$$
+```
 
 We will estimate the function $f_w$ as an MLP.
 
@@ -84,9 +84,9 @@ Then, a sufficient way of ensuring each linear layer $i$ to be 1-Lipschitz is to
 As proposed in other follow-up papers, another way to ensure the constraint is to penalize when the parameters do not respect it directly in the loss.
 
 That is, we then optimize on the following penalized optimization program:
-
-$$\max_{w\in\mathcal{W}} \mathbb{\hat E}_{x_1\sim\mathbb{P}_1}[f_w(x_1)] - \mathbb{\hat E}_{x_2\sim\mathbb{P}_2}[f_w(x_2)] + \lambda\times \vert\vert w - 1(w)\vert\vert _2^2
-$$
+```math
+\max_{w\in\mathcal{W}} \mathbb{\hat E}_{x_1\sim\mathbb{P}_1}[f_w(x_1)] - \mathbb{\hat E}_{x_2\sim\mathbb{P}_2}[f_w(x_2)] + \lambda\times \vert\vert w - 1(w)\vert\vert _2^2
+```
 
 where $\lambda$ is an additional hyperparameter that controls the amount of penalization given to the constraint, and $1(w)$ is an object of same size than $w$ constant to $1$.
 
