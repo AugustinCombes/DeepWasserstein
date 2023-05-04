@@ -41,32 +41,28 @@ Arjovsky et al. propose a new approach based on Optimal Transport theory, expand
 ### III. Theory
 
 Unlike in GANs, where the generator's loss is the binary cross-entropy between the discriminator's output and a target value indicating whether the generated sample is real or fake, WGAN use the Wasserstein-1 distance (also known as the Earth Mover's Distance) to measure the difference between the real and generated distributions:
-
-$$
+```math
 W(\mathbb{P}_r, \mathbb{P}_g) = \inf_{\gamma \in \Pi(\mathbb{P}_r, \mathbb{P}_g)}\mathbb{E}_{(x, y)\sim\gamma}[\vert\vert x-y\vert\vert]
-$$
+```
 where $\Pi(\mathbb{P}_r, \mathbb{P}_g)$ denotes all joint distributions $\gamma (x,y)$ whose marginals are respectively $\mathbb{P}_r$ and $\mathbb{P}_g$.
 
 However, this formulation is highly impractical, as it is not tractable and can't be used in practice. Instead, WGAN uses the Kantorovich-Rubinstein equivalent:
-
-$$
+```math
 W(\mathbb{P}_r, \mathbb{P}_\theta) = \sup_{\vert\vert f_L\vert \vert \leq 1}\mathbb{E}_{x_1\sim\mathbb{P}_r}[f(x)] - \mathbb{E}_{x_2\sim\mathbb{P}_\theta}[f(x_2)]
-$$
+```
 
 More precisely, we will search $f$ as a parametrized function $f_w$, for $w\in\mathcal{W}$, being $K$-Lipschitz for some $K$. If the supremum is attained for some $w$, then we have a calculation of $W(\mathbb{P}_r, \mathbb{P}_\theta)$ up to a constant factor.
 
 Therefore, to approximate the Wasserstein distance, we will train a neural network to maximize the following objective function:
-
-$$
+```math
 \max_{w\in\mathcal{W}} \mathbb{E}_{x_1\sim\mathbb{P}_1}[f_w(x_1)] - \mathbb{E}_{x_2\sim\mathbb{P}_2}[f_w(x_2)]
-$$
+```
 
 The resulting value should be close to the "true" Wasserstein distance between the two distributions.
 
 ### IV. Numerical estimation
 
 In practice, denoting with $\mathbb{\hat E}$ the empirical mean operator, we will optimize numerically the empirical counterpart of this optimization program, that is:
-
 $$
 \max_{w\in\mathcal{W}} \mathbb{\hat E}_{x_1\sim\mathbb{P}_1}[f_w(x_1)] - \mathbb{\hat E}_{x_2\sim\mathbb{P}_2}[f_w(x_2)]
 $$
