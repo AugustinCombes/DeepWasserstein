@@ -2,6 +2,7 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AugustinCombes/DeepWasserstein/blob/main/main.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AugustinCombes/DeepWasserstein/main?labpath=main.ipynb)
+[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/AugustinCombes/DeepWasserstein/blob/main/main.ipynb)
 
 *Group project for the [Optimal Transport course](http://marcocuturi.net/ot.html) at ENSAE teached by Marco Cuturi (spring 2023).*
 
